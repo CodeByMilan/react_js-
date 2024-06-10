@@ -51,7 +51,7 @@ export default function Textform(props) {
           rows="10"
           value={text}
           onChange={handleonChange}
-          style={{backgroundColor:props.mode==='light' ? 'white':'grey',color:props.mode==='dark' ? 'white':'black' } }
+          style={{backgroundColor:props.mode==='light' ? 'white':'#0b144c',color:props.mode==='dark' ? 'white':'black' } }
         ></textarea>
       </div>
       <button
@@ -99,13 +99,13 @@ export default function Textform(props) {
         RemoveExtraSpace
       </button>
 
-      <div className="container my-2" style={{color:props.mode==='dark' ? 'white':'black'} }>
+      <div className="container my-2" style={{color:props.mode==='dark' ? 'white':'#0b144c'} }>
       <h1>Summary</h1>
         {wordCount} number of words and {text.length} number of character<br></br>
       
         It takes around {0.008*wordCount} minutes of time  to read the paragraph.
       </div>
-      <div className="container my-2 " style={{color:props.mode==='dark' ? 'white':'black'} }>
+      <div className="container my-2 " style={{color:props.mode==='dark' ? 'white':'#0b144c'} }>
         <h2>Preview </h2>
         {text.length>0? text :"Enter the text above to preview here "}
       </div>

@@ -8,7 +8,7 @@ const[mode,setMode]=useState('light');
 const toggleMode= ()=>{
   if (mode==='light'){
     setMode("dark");
-    document.body.style.backgroundColor="grey";
+    document.body.style.backgroundColor="#0b144c";
   }
   else{
     setMode('light');
