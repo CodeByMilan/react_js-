@@ -41,6 +41,7 @@ export default function Textform(props) {
   const wordCount = countWords(text);
   return (
     <>
+    <div className="container my-4 ">
       <div className="mb-3" style={{color:props.mode==='dark' ? 'white':'black'} }>
         <label htmlFor="exampleFormControlTextarea1" className="form-label">
          <h1> {props.title}</h1>
@@ -108,6 +109,7 @@ export default function Textform(props) {
       <div className="container my-2 " style={{color:props.mode==='dark' ? 'white':'#0b144c'} }>
         <h2>Preview </h2>
         {text.length>0? text :"Enter the text above to preview here "}
+      </div>
       </div>
     </>
   );
