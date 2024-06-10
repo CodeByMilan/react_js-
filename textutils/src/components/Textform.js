@@ -16,8 +16,9 @@ export default function Textform(props) {
     Settext(newText);
   };
 
-  const Capitalized = () => {
-    const newText = text.replace(/\b\w/g, char => char.toUpperCase());
+  const RemoveExtraSpace = () => {
+    //text.trim removes leading and tailing space and replace(/\s+/g, ' ') replaces multiples spaces with single space 
+    const newText =  text.trim().replace(/\s+/g, ' ');
     Settext(newText);
   };
 
@@ -25,6 +26,10 @@ export default function Textform(props) {
     navigator.clipboard.writeText(text)
       .then(() => alert('Text copied to clipboard'))
       .catch(err => console.error('Could not copy text: ', err));
+  };
+  const Capitalized = () => {
+    const newText = text.replace(/\b\w/g, char => char.toUpperCase());
+    Settext(newText);
   };
   const handleonChange = (event) => {
     //this will allow to write in the text box as when we write the text the text valuw will be text so that the value of the tect will be target value
@@ -84,6 +89,13 @@ export default function Textform(props) {
         className="btn btn-primary  mx-1"
       >
         Copy
+      </button>
+      <button
+        type="button"
+        onClick={RemoveExtraSpace}
+        className="btn btn-primary  mx-1"
+      >
+        RemoveExtraSpace
       </button>
 
       <div className="container my-2">
