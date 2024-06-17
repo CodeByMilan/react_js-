@@ -33,11 +33,10 @@ const toggleMode= ()=>{
    
       {/* <div className="container my-4 "> */}
       <Routes>
-      <Route path="/" exact
-       element={<Textform  title="Enter The Text To Analyze"  mode ={mode}/>}/>
+      <Route  exact path="/" element={<Textform  title="Enter The Text To Analyze"  mode ={mode}/>}/>
        
       {/* </div> */}
-      <Route path="/About" exact element={<About/>}/> 
+      <Route  exact path="/About" element={<About/>}/> 
        
        </Routes>
       </Router>

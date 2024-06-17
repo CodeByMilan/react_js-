@@ -36,7 +36,7 @@ export default function Textform(props) {
     Settext(event.target.value);
   };
   //count number of words
-  //can use (text.split(" ").length)
+  //can use (text.split(" ").filter((element)=>{return element.length!=0}).length)
   const countWords = (text) => text.trim().split(/\s+/).filter(Boolean).length;
   const wordCount = countWords(text);
   return (
@@ -59,20 +59,23 @@ export default function Textform(props) {
         type="button"
         onClick={ToUpperCase}
         className="btn btn-primary mx-1"
+        disabled ={text.length===0}
       >
         Convert to UpperCase
       </button>
       <button
         type="button"
         onClick={ToLowerCase}
-        className="btn btn-primary mx-1"
+        className="btn btn-primary mx-1 my-1"
+        disabled ={text.length===0}
       >
         Convert to LowerCase
       </button>
       <button
         type="button"
         onClick={ClearText}
-        className="btn btn-primary  mx-1"
+        className="btn btn-primary  mx-1 my-1"
+        disabled ={text.length===0}
       >
         ClearText
       </button>
@@ -80,7 +83,8 @@ export default function Textform(props) {
       <button
         type="button"
         onClick={Capitalized}
-        className="btn btn-primary  mx-1"
+        className="btn btn-primary  mx-1 my-1"
+        disabled ={text.length===0}
       >
         Capitalized Case
       </button>
@@ -88,14 +92,16 @@ export default function Textform(props) {
       <button
         type="button"
         onClick={Copy}
-        className="btn btn-primary  mx-1"
+        className="btn btn-primary  mx-1 my-1"
+        disabled ={text.length===0}
       >
         Copy
       </button>
       <button
         type="button"
         onClick={RemoveExtraSpace}
-        className="btn btn-primary  mx-1"
+        className="btn btn-primary  mx-1  my-1"
+        disabled ={text.length===0}
       >
         RemoveExtraSpace
       </button>
