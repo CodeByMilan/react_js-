@@ -6,22 +6,52 @@ export class News extends Component {
     super();
     this.state = {
       articles: [],
-      loading: true, 
+      loading: true,
+      page: 1,
     };
   }
 
   async componentDidMount() {
     try {
-      let url =
-        "https://newsapi.org/v2/everything?q=apple&from=2024-06-17&to=2024-06-17&sortBy=popularity&apiKey=8c6cfb8b02db4921b4482540be75a4ac";
+      let url = `https://newsapi.org/v2/everything?q=apple&from=2024-06-17&to=2024-06-17&sortBy=popularity&apiKey=8c6cfb8b02db4921b4482540be75a4ac&page=${this.state.page}&pagesize=12`;
       let data = await fetch(url);
       let parsedData = await data.json();
-      this.setState({ articles: parsedData.articles, loading: false });
+      this.setState({
+        articles: parsedData.articles,
+        totalResults: parsedData.totalResults,
+        loading: false,
+      });
     } catch (error) {
       console.error("Error fetching data:", error);
       this.setState({ loading: false });
     }
   }
+
+  handleprevClick = async () => {
+    let url = `https://newsapi.org/v2/everything?q=apple&from=2024-06-17&to=2024-06-17&sortBy=popularity&apiKey=8c6cfb8b02db4921b4482540be75a4ac&page=${
+      this.state.page - 1
+    } &pagesize=12`;
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    this.setState({
+      page: this.state.page - 1,
+      articles: parsedData.articles,
+    });
+  };
+  handlenextClick = async () => {
+    if (this.state.page + 1 > Math.ceil(this.state.totalResults / 12)) {
+    } else {
+      let url = `https://newsapi.org/v2/everything?q=apple&from=2024-06-17&to=2024-06-17&sortBy=popularity&apiKey=8c6cfb8b02db4921b4482540be75a4ac&page=${
+        this.state.page + 1
+      }&pagesize=12`;
+      let data = await fetch(url);
+      let parsedData = await data.json();
+      this.setState({
+        page: this.state.page + 1,
+        articles: parsedData.articles,
+      });
+    }
+  };
 
   render() {
     return (
@@ -55,6 +85,24 @@ export class News extends Component {
             )}
           </div>
         )}
+        <div className="container d-flex justify-content-between">
+          <button
+            type="button"
+            disabled={this.page <= 1}
+            class="btn btn-primary"
+            onClick={this.handleprevClick}
+          >
+            &larr;Previous{" "}
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary  "
+            onClick={this.handlenextClick}
+            
+          >
+            Next&rarr;
+          </button>
+        </div>
       </div>
     );
   }
