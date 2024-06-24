@@ -13,7 +13,7 @@ export class News extends Component {
 
   async componentDidMount() {
     try {
-      let url = `https://newsapi.org/v2/everything?q=apple&from=2024-06-17&to=2024-06-17&sortBy=popularity&apiKey=8c6cfb8b02db4921b4482540be75a4ac&page=${this.state.page}&pagesize=${this.props.pagesize}`;
+      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=8c6cfb8b02db4921b4482540be75a4ac&page=${this.state.page}&pagesize=${this.props.pagesize}`;
       let data = await fetch(url);
       let parsedData = await data.json();
       this.setState({
@@ -28,7 +28,7 @@ export class News extends Component {
   }
 
   handleprevClick = async () => {
-    let url = `https://newsapi.org/v2/everything?q=apple&from=2024-06-17&to=2024-06-17&sortBy=popularity&apiKey=8c6cfb8b02db4921b4482540be75a4ac&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=8c6cfb8b02db4921b4482540be75a4ac&page=${
       this.state.page - 1
     } &pagesize=${this.props.pagesize}`;
     let data = await fetch(url);
@@ -39,7 +39,7 @@ export class News extends Component {
     });
   };
   handlenextClick = async () => {
-      let url = `https://newsapi.org/v2/everything?q=apple&from=2024-06-17&to=2024-06-17&sortBy=popularity&apiKey=8c6cfb8b02db4921b4482540be75a4ac&page=${
+      let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=8c6cfb8b02db4921b4482540be75a4ac&page=${
         this.state.page + 1
       }&pagesize=${this.props.pagesize}`;
       let data = await fetch(url);
